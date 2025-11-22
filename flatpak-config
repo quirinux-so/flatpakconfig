@@ -10,139 +10,154 @@
 # INICIO / FIN (IDIOMAS) [CÓDIGO REUTILIZABLE]
 # =========================================================================================
 
-# Alemán
-function _inicio_de() # Verifica si está instalado zenity
+function _inicio_es() 
+
 {
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_de
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_de
+
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "Este script debe ejecutarse con permisos de root."
+    echo 'Puedes intentarlo con "sudo" tuusuario, "sudo su" o "su root".'
+    echo ''
+    exit 1
 fi
-}
-function _fin_de()
-{
-zenity --info *text "Einstellungen vorgenommen. Sie können sie jederzeit umkehren. "
+_menuPrincipal_es
 }
 
-# Inglés
-function _inicio_en() # Verifica si está instalado zenity
+function _inicio_de() 
 {
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_en
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_en
+
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "Dieses Skript muss mit Root-Rechten ausgeführt werden."
+    echo 'Du kannst es mit "sudo deinbenutzer", "sudo su" oder "su root" versuchen.'
+    echo ''
+    exit 1
 fi
+_menuPrincipal_de
 }
+
+function _inicio_en()
+{
+
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "This script must be run with root permissions."
+    echo 'You can try with "sudo yourusername", "sudo su", or "su root".'
+    echo ''
+    exit 1
+
+fi
+_menuPrincipal_en
+}
+
+function _inicio_fr() 
+{
+
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "Ce script doit être exécuté avec des permissions de root."
+    echo 'Vous pouvez essayer avec "sudo votrenomdutilisateur", "sudo su" ou "su root".'
+    echo ''
+    exit 1
+fi
+_menuPrincipal_fr
+}
+
+function _inicio_gl() 
+{
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "Este script debe ser executado con permisos de root."
+    echo 'Podes intentalo con "sudo o teuusuario", "sudo su" ou "su root".'
+    echo ''
+    exit 1
+fi
+_menuPrincipal_gl
+}
+
+function _inicio_it ()
+{
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "Questo script deve essere eseguito con i permessi di root."
+    echo 'Puoi provare con "sudo iltuoutente", "sudo su" o "su root".'
+    echo ''
+    exit 1
+fi
+_menuPrincipal_it 
+}
+
+function _inicio_pt() 
+{
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "Este script deve ser executado com permissões de root."
+    echo 'Você pode tentar com "sudo seunome de usuário", "sudo su" ou "su root".'
+    echo ''
+    exit 1
+fi
+_menuPrincipal_pt
+
+}
+
+function _inicio_ru() 
+{
+if [ "$EUID" -ne 0 ]; then
+    echo ''
+    echo "Этот скрипт должен выполняться с правами root."
+    echo 'Вы можете попробовать с "sudo вашеимяпользователя", "sudo su" или "su root".'
+    echo ''
+    exit 1
+fi
+_menuPrincipal_ru
+
+}
+
 function _fin_en()
 {
-zenity --info *text "Settings made. You can always reverse them."
+zenity --info --text "Settings made. You can always reverse them."
 }
 
-# Castellano
-function _inicio_es() # Verifica si está instalado zenity
-{
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_es
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_es
-fi
-}
 function _fin_es()
 {
-zenity --info *text "Configuraciones realizadas. Siempre puedes revertirlas."
+zenity --info --text "Configuraciones realizadas. Siempre puedes revertirlas."
 }
 
-# Francés
-function _inicio_fr() # Verifica si está instalado zenity
+function _fin_gl()
 {
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_fr
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_fr
-fi
+zenity --info --text "Configuración feita. Sempre os podes reverter."
+}
+
+function _fin_ru()
+{
+zenity --info --text "Настройки сделаны. Вы всегда можете отменить их.  "
+}
+
+function _fin_de()
+{
+zenity --info --text "Einstellungen vorgenommen. Sie können sie jederzeit umkehren. "
+}
+
+function _fin_pt()
+{
+zenity --info --text "Configurações feitas. Você sempre pode revertê-los."
+}
+
+function _fin_it ()
+{
+zenity --info --text "Impostazioni effettuate. Puoi sempre invertirli. "
 }
 function _fin_fr()
 {
-zenity --info *text "Paramètres définis. Vous pouvez toujours les inverser. "
+zenity --info --text "Paramètres définis. Vous pouvez toujours les inverser. "
 }
 
-# Galego
-function _inicio_gl() # Verifica si está instalado zenity
-{
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_gl
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_gl
-fi
-}
-function _fin_gl()
-{
-zenity --info *text "Configuración feita. Sempre os podes reverter."
-}
 
-# Italiano
-function _inicio_it () # Verifica si está instalado zenity
-{
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_it
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_it 
-fi
-}
-function _fin_it ()
-{
-zenity --info *text "Impostazioni effettuate. Puoi sempre invertirli. "
-}
-
-# Portugués
-function _inicio_pt() # Verifica si está instalado zenity
-{
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_pt
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_pt
-fi
-}
-function _fin_pt()
-{
-zenity --info *text "Configurações feitas. Você sempre pode revertê-los."
-}
-
-# Ruso
-function _inicio_ru() # Verifica si está instalado zenity
-{
-if [ -e "/usr/bin/zenity" ]; then # Está instalado, continúa
-_menuPrincipal_ru
-else # No está instalado zenity, lo instala y continúa
-_instalarZenity
-_menuPrincipal_ru
-fi
-}
-function _fin_ru()
-{
-zenity --info *text "Настройки сделаны. Вы всегда можете отменить их.  "
-}
-
-# =========================================================================================
-# INSTALAR ZENITY [CÓDIGO REUTILIZABLE]
-# =========================================================================================
-
-function _instalarZenity()
-{
-sudo apt-get install zenity -y
-}
 
 # =========================================================================================
 # SALIR [CÓDIGO REUTILIZABLE]
 # =========================================================================================
-
 
 function _salir()
 {
@@ -211,26 +226,81 @@ function _activar()
 FILE="/usr/bin/mintinstall"
 
 if [ ! -e ${FILE} ]; then
+		clear
+		(
+		apt-get install gnome-software-plugin-flatpak -y
+		echo "25"; sleep 1
+		echo "# Procesando"; sleep 1
+		 
+		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+		echo "50"; sleep 1
+		echo "# Procesando"; sleep 1  
+		  
+		sudo apt-get install gir1.2-flatpak-1.0 -y
+		echo "50"; sleep 1
+		echo "# Procesando"; sleep 1 
 
-clear
-apt-get install gnome-software-plugin-flatpak -y
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-sudo apt-get install gir1.2-flatpak-1.0 -y
+		zenity --progress --title="Configurando" --text="Ten paciencia, llevará tiempo" --percentage=0 --auto-close --auto-kill
+		
+		)|
+		if [ "$?" = -1 ] ; then
+		zenity --error --text="Configuración cancelada"
+		fi
+
 else
+		( 
+		sudo apt-get update -y
+		echo "10"; sleep 1
+		echo "# Procesando"; sleep 1
 
-sudo apt-get update -y
-sudo apt-get install flatpak -y
-sudo apt-get install -f -y
-sudo apt-get autoremove --purge -y
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+		sudo apt-get install flatpak gir1.2-flatpak-1.0 -y
+		echo "15"; sleep 1
+		echo "# Procesando"; sleep 1
 
-sudo apt-get reinstall mintinstall -y
-sudo rm /usr/share/applications/mintinstall.desktop
-sudo cp /opt/mintinstall/applications/* /usr/share/applications/
-sudo cp /opt/mintinstall/icons/* /usr/share/icons/
-sudo apt-get install girl1.2-flatpak-1.0 -y
+		sudo apt-get install -f -y
+		echo "20"; sleep 1
+		echo "# Procesando"; sleep 1
+
+		sudo apt-get autoremove --purge -y
+		echo "25"; sleep 1
+		echo "# Procesando"; sleep 1
+
+		flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+		echo "50"; sleep 1
+		echo "# Procesando"; sleep 1
+
+		sudo apt-get install gir1.2-flatpak-1.0 -y
+		echo "100"; sleep 1
+		echo "# Procesando"; sleep 1
+		
+		)|
+		zenity --progress --title="Configurando" --text="Ten paciencia, llevará tiempo" --percentage=0 --auto-close --auto-kill
+		if [ "$?" = -1 ] ; then
+		zenity --error --text="Configuración cancelada"
+		fi
 
 fi
+
+if which flatpak >/dev/null 2>&1
+    then
+		(		
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        echo "25"; sleep 1
+		echo "# Procesando"; sleep 1
+        mkdir -p /var/lib/flatpak/exports/share/applications
+        echo "50"; sleep 1
+		echo "# Procesando"; sleep 1
+        mkdir -p /var/lib/flatpak/exports/share/icons
+        echo "100"; sleep 1
+		echo "# Procesando"; sleep 1
+		
+		)|
+		zenity --progress --title="Configurando" --text="Ten paciencia, llevará tiempo" --percentage=0 --auto-close --auto-kill
+		if [ "$?" = -1 ] ; then
+		zenity --error --text="Configuración cancelada"
+		fi
+		
+    fi
 
 }
 
@@ -238,13 +308,35 @@ fi
 
 function _desactivar()
 {
+    (
+    sudo apt-get update -y
+    echo "20"; sleep 1
 
-sudo apt-get update -y
-sudo apt-get remove --purge flatpak -y
-sudo apt-get install -f -y
-sudo apt-get autoremove --purge -y
+    # Desinstalar Flatpak por completo
+    sudo apt-get remove --purge flatpak -y
+    echo "40"; sleep 1
 
+    sudo apt-get autoremove --purge -y
+    echo "60"; sleep 1
+
+    # Instalar ostree para crear un repositorio vacío válido
+    sudo apt-get install -y ostree
+    echo "70"; sleep 1
+
+    # Crear repo Flatpak válido pero vacío
+    sudo rm -rf /var/lib/flatpak/repo
+    sudo mkdir -p /var/lib/flatpak
+    sudo ostree init --mode=archive-z2 --repo=/var/lib/flatpak/repo
+
+    echo "100"; sleep 1
+    ) |
+    zenity --progress --title="Configurando" --text="Ten paciencia, llevará tiempo" --percentage=0 --auto-close --auto-kill
+
+    if [ "$?" = -1 ] ; then
+        zenity --error --text="Configuración cancelada"
+    fi
 }
+
 
 
 # =========================================================================================
@@ -459,7 +551,6 @@ if [[ $opPrincipal == "Убирайся" ]]; then
 _salir
 fi
 }
-
 
 # =========================================================================================
 
